@@ -232,12 +232,7 @@ app.post('/api/contact', async (req, res) => {
   }
 });
     
-  catch (err) {
-    console.error('Email error:', err);
-    res.status(500).json({ error: 'Failed to send message. Please try again later.' });
-  }
-;
-
+  
 // ── SKILLS UPDATE ──
 app.put('/api/skills', (req, res) => {
   try {
