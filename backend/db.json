@@ -1,0 +1,180 @@
+{
+  "profile": {
+    "name": "Siddharthan K",
+    "title": "MERN Stack Developer",
+    "bio": "Hi, I'm Siddharthan K, a passionate MERN Stack Developer with a strong interest in creating modern, responsive, and user-friendly web applications. I enjoy turning ideas into functional digital solutions by combining clean design with efficient, scalable code.\n\nMy expertise includes HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB, enabling me to build complete full-stack applications from frontend interfaces to backend APIs and database management. I focus on writing maintainable code, building responsive user experiences, and continuously improving my development skills.\n\nI enjoy solving real-world problems through technology and have experience developing projects such as business websites, portfolio websites, and full-stack web applications. Every project helps me strengthen my knowledge of software development, responsive design, RESTful APIs, authentication, and deployment.\n\nAs a developer, I believe in continuous learning and staying up to date with the latest technologies and best practices in web development. My goal is to contribute to innovative teams, build impactful products, and grow into a highly skilled full-stack software engineer.",
+    "avatar": "/assets/profile.jpg?t=1782892802526",
+    "email": "siddharthank45@gmail.com",
+    "phone": "6381558844",
+    "whatsapp": "6381558844",
+    "address": "Trichy, Tamil Nadu, India",
+    "github": "https://github.com/SiddCode",
+    "linkedin": "https://www.linkedin.com/in/siddharthan-k-315baa252/",
+    "instagram": "https://www.instagram.com/sidd_6_10/",
+    "resumeLink": ""
+  },
+  "projects": [
+    {
+      "id": "1",
+      "title": "SGS HR Workforce Solution",
+      "description": "A professional HR consultancy platform with modern UI, service listings, and contact management for workforce solutions in India.",
+      "image": "/assets/sgs_project.png",
+      "link": "https://sgsconsultancy.onrender.com/",
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express"
+      ],
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": "Sweet Tooth Trichy",
+      "description": "An elegant bakery and desserts e-commerce website with menu showcase, ordering system, and beautiful sweet-themed design.",
+      "image": "/assets/sweettooth_project.png",
+      "link": "https://sweettoothtrichy-github-io.onrender.com/",
+      "tags": [
+        "React",
+        "CSS",
+        "JavaScript"
+      ],
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "id": "1",
+      "role": "MERN Stack Developer",
+      "company": "Freelance / Self-Employed",
+      "period": "2023 – Present",
+      "description": "Designed and developed responsive websites using React, Node.js, Express, and MongoDB. Built full-stack applications with RESTful APIs, authentication systems, and admin dashboards.",
+      "highlights": [
+        "Built SGS HR Workforce Solution — a full corporate consultancy website",
+        "Developed Sweet Tooth Trichy — a complete bakery e-commerce platform",
+        "Implemented RESTful APIs and MongoDB database schemas",
+        "Deployed applications on Vercel, Render, and MongoDB Atlas"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "1",
+      "degree": "B.E. Electrical and Electronics Engineering",
+      "short": "B.E. EEE",
+      "institution": "Saranathan College of Engineering",
+      "period": "2022 – 2026",
+      "grade": "Pursuing",
+      "icon": "🎓"
+    }
+  ],
+  "services": [
+    {
+      "id": "1",
+      "icon": "📱",
+      "title": "Responsive Websites",
+      "description": "Mobile-first, pixel-perfect responsive designs that look stunning on all devices."
+    },
+    {
+      "id": "2",
+      "icon": "⚡",
+      "title": "Full Stack Development",
+      "description": "End-to-end MERN stack applications with React frontend and Node.js backend."
+    },
+    {
+      "id": "3",
+      "icon": "🔌",
+      "title": "REST API Development",
+      "description": "Scalable and secure RESTful APIs with Express.js and proper documentation."
+    },
+    {
+      "id": "4",
+      "icon": "🖥️",
+      "title": "Admin Dashboard",
+      "description": "Custom admin panels for managing content, users, and analytics efficiently."
+    },
+    {
+      "id": "5",
+      "icon": "🗄️",
+      "title": "MongoDB Database Design",
+      "description": "Optimized NoSQL database schemas and queries using MongoDB and Mongoose."
+    },
+    {
+      "id": "6",
+      "icon": "🔐",
+      "title": "Authentication System",
+      "description": "Secure JWT-based auth with login, register, protected routes, and sessions."
+    },
+    {
+      "id": "7",
+      "icon": "🔍",
+      "title": "SEO Optimization",
+      "description": "Technical SEO, meta tags, structured data, and performance optimizations."
+    }
+  ],
+  "skills": {
+    "Frontend": [
+      {
+        "name": "React",
+        "level": 90
+      },
+      {
+        "name": "React Router",
+        "level": 85
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": 80
+      },
+      {
+        "name": "Framer Motion",
+        "level": 75
+      },
+      {
+        "name": "HTML/CSS",
+        "level": 95
+      },
+      {
+        "name": "JavaScript",
+        "level": 90
+      }
+    ],
+    "Backend": [
+      {
+        "name": "Node.js",
+        "level": 85
+      },
+      {
+        "name": "Express.js",
+        "level": 85
+      }
+    ],
+    "Database": [
+      {
+        "name": "MongoDB",
+        "level": 80
+      },
+      {
+        "name": "Mongoose",
+        "level": 78
+      }
+    ],
+    "Deployment": [
+      {
+        "name": "Vercel",
+        "level": 85
+      },
+      {
+        "name": "Render",
+        "level": 80
+      },
+      {
+        "name": "MongoDB Atlas",
+        "level": 75
+      }
+    ]
+  },
+  "admin": {
+    "password": "admin@siddha123"
+  }
+}

@@ -1,0 +1,351 @@
+/* ═══════════════════════════════════════════════════════════════
+   SIDDHARTHAN K PORTFOLIO — GLOBAL STYLES
+   Theme: Smoky Blue + Warm Ivory
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts Fallback ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables / Design Tokens ── */
+:root {
+  /* Brand Colors */
+  --smoky-blue:       #4A6FA5;
+  --smoky-blue-dark:  #1E3A5F;
+  --smoky-blue-deep:  #0F1F3D;
+  --smoky-blue-mid:   #2C4A7C;
+  --smoky-blue-light: #7BA7D9;
+  --smoky-blue-pale:  #A8C8F0;
+
+  /* Warm Ivory */
+  --ivory:            #F5F0E8;
+  --ivory-dark:       #EDE5D8;
+  --ivory-deeper:     #DDD5C5;
+
+  /* Utility */
+  --charcoal:         #1A1A2E;
+  --text-primary:     #F5F0E8;
+  --text-secondary:   #A8C8F0;
+  --text-muted:       #8BA3C0;
+
+  /* Glass Effects */
+  --glass-bg:         rgba(15, 31, 61, 0.6);
+  --glass-border:     rgba(74, 111, 165, 0.3);
+  --glass-hover:      rgba(74, 111, 165, 0.2);
+
+  /* Gradients */
+  --grad-primary:     linear-gradient(135deg, #0F1F3D 0%, #1E3A5F 50%, #2C4A7C 100%);
+  --grad-accent:      linear-gradient(135deg, #4A6FA5, #7BA7D9);
+  --grad-glow:        radial-gradient(ellipse at center, rgba(74,111,165,0.4) 0%, transparent 70%);
+
+  /* Typography */
+  --font-heading:     'Outfit', sans-serif;
+  --font-body:        'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad:      100px 5%;
+  --nav-height:       70px;
+
+  /* Transitions */
+  --trans-fast:       all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-med:        all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-slow:       all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows */
+  --shadow-card:      0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow:      0 0 30px rgba(74, 111, 165, 0.5);
+  --shadow-hover:     0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-blue:      0 0 20px rgba(123, 167, 217, 0.4);
+
+  /* Border Radius */
+  --radius-sm:        8px;
+  --radius-md:        12px;
+  --radius-lg:        20px;
+  --radius-xl:        30px;
+  --radius-full:      9999px;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--grad-primary);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor globally */
+* { cursor: none !important; }
+a, button, input, textarea, select, [role="button"] { cursor: none !important; }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600; }
+h4 { font-size: 1.2rem; font-weight: 600; }
+
+p  { line-height: 1.7; color: var(--text-secondary); }
+a  { text-decoration: none; color: inherit; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--smoky-blue-deep); }
+::-webkit-scrollbar-thumb { background: var(--smoky-blue); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--smoky-blue-light); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(74, 111, 165, 0.5);
+  color: var(--ivory);
+}
+
+/* ── Section Common Styles ── */
+.section {
+  padding: var(--section-pad);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-alt {
+  background: rgba(15, 31, 61, 0.5);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--smoky-blue-light);
+  background: rgba(74, 111, 165, 0.15);
+  border: 1px solid rgba(74, 111, 165, 0.3);
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ivory) 0%, var(--smoky-blue-pale) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: var(--trans-med);
+}
+
+.glass-card:hover {
+  border-color: rgba(74, 111, 165, 0.6);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-4px);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: none;
+  transition: var(--trans-med);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: var(--trans-fast);
+}
+
+.btn:hover::before { opacity: 1; }
+
+.btn-primary {
+  background: var(--grad-accent);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(74, 111, 165, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(74, 111, 165, 0.7);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--smoky-blue-light);
+  border: 2px solid rgba(74, 111, 165, 0.5);
+}
+
+.btn-outline:hover {
+  background: rgba(74, 111, 165, 0.15);
+  border-color: var(--smoky-blue-light);
+  transform: translateY(-2px);
+}
+
+/* ── Animation Utilities ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Glow Orbs (decorative) ── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Grid Layouts ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root { --section-pad: 70px 6%; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  :root { --section-pad: 50px 5%; }
+}
+
+/* ── Particles canvas ── */
+#particles-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Highlight Gradient Text ── */
+.gradient-text {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Tag Pill ── */
+.tag-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(74, 111, 165, 0.2);
+  border: 1px solid rgba(74, 111, 165, 0.4);
+  border-radius: var(--radius-full);
+  color: var(--smoky-blue-pale);
+  white-space: nowrap;
+}
+
+/* ── Loading Spinner ── */
+.spinner {
+  width: 24px; height: 24px;
+  border: 3px solid rgba(74,111,165,0.3);
+  border-top-color: var(--smoky-blue-light);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Divider ── */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--grad-accent);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
