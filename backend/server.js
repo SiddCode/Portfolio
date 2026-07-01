@@ -180,6 +180,9 @@ app.post('/api/contact', async (req, res) => {
       },
     });
 
+    await transporter.verify();
+console.log("✅ Gmail SMTP Connected");
+
     const mailOptions = {
       from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
       to: 'siddharthank45@gmail.com',
