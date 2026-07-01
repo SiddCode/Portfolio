@@ -173,16 +173,14 @@ app.post('/api/contact', async (req, res) => {
     const nodemailer = require('nodemailer');
 
    const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
+    user: process.env.b08f40001@smtp-brevo.com,
+    pass: process.env.GQHIx9AWmLRYtr0F,
   },
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 30000,
+  
 });
 
     await transporter.verify();
