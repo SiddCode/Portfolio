@@ -239,7 +239,40 @@ app.get("/test", (req, res) => {
   console.log("✅ Test route called");
   res.send("Backend test successful");
 });
+app.get("/api/email-test", async (req, res) => {
+  try {
+    const nodemailer = require("nodemailer");
 
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    const info = await transporter.sendMail({
+      from: process.env.GMAIL_USER,
+      to: "siddharthank45@gmail.com",
+      subject: "Render Email Test",
+      text: "If you received this email, Gmail SMTP is working!",
+    });
+
+    console.log(info);
+
+    res.json({
+      success: true,
+      info,
+    });
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+});
 app.listen(PORT, () => {
   console.log(`🚀 Portfolio backend running on http://localhost:${PORT}`);
 });
