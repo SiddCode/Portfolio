@@ -1,5 +1,6 @@
 
 require('dotenv').config();
+const brevo = require('@getbrevo/brevo');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -166,61 +167,76 @@ app.delete('/api/projects/:id', (req, res) => {
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
+
     if (!name || !email || !subject || !message) {
-      return res.status(400).json({ error: 'All fields are required' });
+      return res.status(400).json({
+        success: false,
+        error: "All fields are required"
+      });
     }
 
-    const nodemailer = require('nodemailer');
+    const apiInstance = new brevo.TransactionalEmailsApi();
 
-   const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.b08f40001@smtp-brevo.com,
-    pass: process.env.GQHIx9AWmLRYtr0F,
-  },
-  
-});
+    apiInstance.setApiKey(
+      brevo.TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY
+    );
 
-    await transporter.verify();
-console.log("✅ Gmail SMTP Connected");
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
 
-    const mailOptions = {
-      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
-      to: 'siddharthank45@gmail.com',
-      replyTo: email,
-      subject: `[Portfolio] ${subject}`,
-      html: `
-        <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0F1F3D; color: #F5F0E8; padding: 30px; border-radius: 12px;">
-          <h2 style="color: #7BA7D9; border-bottom: 2px solid #4A6FA5; padding-bottom: 12px;">New Portfolio Message 📬</h2>
-          <table style="width:100%; border-collapse:collapse;">
-            <tr><td style="padding: 8px 0; color: #aaa; width:100px;">From:</td><td style="padding: 8px 0; font-weight:600;">${name}</td></tr>
-            <tr><td style="padding: 8px 0; color: #aaa;">Email:</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color:#7BA7D9;">${email}</a></td></tr>
-            <tr><td style="padding: 8px 0; color: #aaa;">Subject:</td><td style="padding: 8px 0;">${subject}</td></tr>
-          </table>
-          <div style="margin-top: 20px; background: rgba(74,111,165,0.2); padding: 20px; border-radius: 8px; border-left: 4px solid #4A6FA5;">
-            <p style="margin: 0; line-height: 1.7; white-space: pre-wrap;">${message}</p>
-          </div>
-          <p style="margin-top: 20px; color: #666; font-size: 12px;">Sent via Siddharthan K's Portfolio Website</p>
-        </div>
-      `,
+    sendSmtpEmail.sender = {
+      name: "Siddharthan K Portfolio",
+      email: "siddharthank45@gmail.com"
     };
 
-    const info = await transporter.sendMail(mailOptions);
+    sendSmtpEmail.to = [
+      {
+        email: "siddharthank45@gmail.com",
+        name: "Siddharthan K"
+      }
+    ];
 
-console.log("✅ Email sent!");
-console.log(info);
+    sendSmtpEmail.replyTo = {
+      email: email,
+      name: name
+    };
 
-res.json({
-  success: true,
-  message: "Message sent successfully!"
+    sendSmtpEmail.subject = `[Portfolio] ${subject}`;
+
+    sendSmtpEmail.htmlContent = `
+      <h2>📩 New Portfolio Message</h2>
+
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Subject:</strong> ${subject}</p>
+
+      <hr>
+
+      <p>${message}</p>
+    `;
+
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    res.json({
+      success: true,
+      message: "Message sent successfully!"
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 });
-  } catch (err) {
+    
+  catch (err) {
     console.error('Email error:', err);
     res.status(500).json({ error: 'Failed to send message. Please try again later.' });
   }
-});
+;
 
 // ── SKILLS UPDATE ──
 app.put('/api/skills', (req, res) => {
@@ -242,40 +258,7 @@ app.get("/test", (req, res) => {
   console.log("✅ Test route called");
   res.send("Backend test successful");
 });
-app.get("/api/email-test", async (req, res) => {
-  try {
-    const nodemailer = require("nodemailer");
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    });
-
-    const info = await transporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: "siddharthank45@gmail.com",
-      subject: "Render Email Test",
-      text: "If you received this email, Gmail SMTP is working!",
-    });
-
-    console.log(info);
-
-    res.json({
-      success: true,
-      info,
-    });
-  } catch (err) {
-    console.error(err);
-
-    res.status(500).json({
-      success: false,
-      error: err.message,
-    });
-  }
-});
 app.listen(PORT, () => {
   console.log(`🚀 Portfolio backend running on http://localhost:${PORT}`);
 });
