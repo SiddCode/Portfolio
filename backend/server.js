@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 5000;
 app.get("/", (req, res) => {
   res.send("Portfolio Backend is Running ");
 });
-
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true
@@ -202,8 +201,15 @@ app.post('/api/contact', async (req, res) => {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: 'Message sent successfully!' });
+    const info = await transporter.sendMail(mailOptions);
+
+console.log("✅ Email sent!");
+console.log(info);
+
+res.json({
+  success: true,
+  message: "Message sent successfully!"
+});
   } catch (err) {
     console.error('Email error:', err);
     res.status(500).json({ error: 'Failed to send message. Please try again later.' });
