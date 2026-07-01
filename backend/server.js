@@ -235,6 +235,10 @@ app.put('/api/skills', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Siddharthan K Portfolio API is running 🚀' });
 });
+app.get("/test", (req, res) => {
+  console.log("✅ Test route called");
+  res.send("Backend test successful");
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Portfolio backend running on http://localhost:${PORT}`);
