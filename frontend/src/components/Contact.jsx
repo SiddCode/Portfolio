@@ -2,6 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useToast } from '../context/ToastContext';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+await axios.post(`${API_URL}/api/contact`, form);
+
 const CONTACT_INFO = [
   { icon: '', label: 'Email',     value: 'siddharthank45@gmail.com', href: 'mailto:siddharthank45@gmail.com' },
   { icon: '', label: 'Phone',     value: '+91 63815 58844',          href: 'tel:+916381558844' },
@@ -55,7 +59,7 @@ export default function Contact() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
     try {
-      await axios.post('/api/contact', form);
+      await axios.post(`${API_URL}/api/contact`, form);
       addToast('✅ Message sent! I\'ll get back to you soon.', 'success');
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch {
